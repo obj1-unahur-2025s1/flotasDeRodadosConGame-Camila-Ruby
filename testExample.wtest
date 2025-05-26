@@ -1,9 +1,56 @@
-import example.pepita
+import dependencias.*
+import rodados.*
 
-describe "group of tests for pepita" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+describe "Tests con dos dependencias" {
+  const deportes = new Dependencia(cantidadEmpleados = 45)
+  const cultura = new Dependencia(cantidadEmpleados = 31)
+
+  var cachito = new ChevroletCorsa(color = "Rojo")
+
+  method initialize(){
+    deportes.agregarAFlota(cachito)
+    deportes.agregarAFlota(new ChevroletCorsa(color = "Azul"))
+    deportes.agregarAFlota(new ChevroletCorsa(color = "Verde"))
+    deportes.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
+    deportes.agregarAFlota(new AutoEspecial(capacidad = 5, velocidadMaxima = 160, peso = 1200, color = "Beige"))
+
+    cultura.agregarAFlota(cachito)
+    cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
+    cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
+    cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = false))
+    trafic.interior(popular)
+    trafic.motor(baraton)
+    cultura.agregarAFlota(trafic)
+
+  }
+
+  test "El peso total de la flota de deportes es de 6450 y de cultura es de 10700" {
+    assert.equals(6450, deportes.pesoTotalFlota())
+    assert.equals(10700, cultura.pesoTotalFlota())
+
+  }
+  test "Las flotas de cultura  NO esta bien equipada y deportes esta bien equipada"{
+    assert.that(deportes.estaBienEquipada())
+    assert.notThat(cultura.estaBienEquipada())
+    //cultura no puede estar bien equipada xq la traffic va a 80km con el motor baraton
+
+  }
+  test "El color de rodado mas rapido de deportes es Beige y el de cultura es Rojo" {
+    assert.equals("Beige", deportes.colorDeRodadoMasRapido())
+    //el auto más rapido de deportes es el auto especial que es de color Beige y tiene una velocidad máxima de 160
+    assert.equals("Rojo", cultura.colorDeRodadoMasRapido())
+    //el auto más rapido de cultura es cachito que es de color Rojo y tiene una velocidad máxima de 150
+  }
+
+  test "Metodo esGrande para ambas dependencias. Deportes es true y cultura es false" {
+    assert.that(deportes.esGrande())
+    assert.notThat(cultura.esGrande())
+  }
+
+  test "capacidadFaltante" {
+    assert.equals(25, deportes.capacidadFaltante())
+    assert.equals(5, cultura.capacidadFaltante())
   }
 
 }

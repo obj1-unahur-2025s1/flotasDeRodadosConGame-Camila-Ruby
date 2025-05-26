@@ -1,6 +1,5 @@
 import wollok.game.*
 
-import example.pepita
 
 program PepitaGame {
 	game.title("Pepita")
@@ -12,7 +11,7 @@ program PepitaGame {
 
 	//
 
-	game.showAttributes(pepita) //Debug
+	//game.showAttributes(pepita) //Debug
 
 	game.start()
 }

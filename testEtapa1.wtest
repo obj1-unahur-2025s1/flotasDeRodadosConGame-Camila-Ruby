@@ -6,7 +6,7 @@ describe "Tests con dos dependencias" {
   const deportes = new Dependencia(cantidadEmpleados = 45)
   const cultura = new Dependencia(cantidadEmpleados = 31)
 
-  var cachito = new ChevroletCorsa(color = "Rojo")
+  const cachito = new ChevroletCorsa(color = "Rojo")
 
   method initialize(){
     deportes.agregarAFlota(cachito)
@@ -20,7 +20,7 @@ describe "Tests con dos dependencias" {
     cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
     cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = false))
     trafic.interior(popular)
-    trafic.motor(baraton)
+    trafic.motor(bataton)
     cultura.agregarAFlota(trafic)
 
   }
@@ -33,7 +33,7 @@ describe "Tests con dos dependencias" {
   test "Las flotas de cultura  NO esta bien equipada y deportes esta bien equipada"{
     assert.that(deportes.estaBienEquipada())
     assert.notThat(cultura.estaBienEquipada())
-    //cultura no puede estar bien equipada xq la traffic va a 80km con el motor baraton
+    //cultura no puede estar bien equipada xq la traffic va a 80km con el motor bataton
 
   }
   test "El color de rodado mas rapido de deportes es Beige y el de cultura es Rojo" {

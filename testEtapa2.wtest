@@ -1,0 +1,34 @@
+import dependencias.*
+import pedidos.*
+import rodados.*
+
+
+describe "Conjuntos de tests para la etapa 2" {
+    const cachito = new ChevroletCorsa(color = "Rojo")
+    const pedido1 = new Pedido(
+        distancia = 960, 
+        tiempoMaximo = 8, 
+        cantidadPasajeros = 4
+        )
+    
+
+  test "cachito puede satisfacer el viaje de pedido1" {
+    assert.that(pedido1.autoPuedeSatisfacer(cachito))
+  }
+
+  test "Si agregamos el Rojo como color incompatible, cachito ya no puede satisfacer el viaje" {
+    pedido1.agregarColorIncompatible("Rojo")
+    assert.notThat(pedido1.autoPuedeSatisfacer(cachito))
+  }
+
+  test "Si cambiamos la cantidad de pasajeros a 6, cachito ya no puede satisfacer el viaje" {
+    pedido1.cantidadPasajeros(6)
+    assert.notThat(pedido1.autoPuedeSatisfacer(cachito))
+  }
+
+  test "Si cambiamos el tiempo maximo a 6, cachito ya no puede satisfacer el viaje" {
+    pedido1.acelerar()
+    pedido1.acelerar()
+    assert.notThat(pedido1.autoPuedeSatisfacer(cachito))
+  }
+}

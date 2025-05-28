@@ -4,6 +4,11 @@ class ChevroletCorsa {
   const property velocidadMaxima =  150
   const property peso = 1300
   const property color 
+  method initialize(){
+    if(not colores.validos().contains(color)){
+      self.error(color.toString() + " no se encuentra entre los colores válidos")
+    }
+  }
 }
 
 class RenaultKwid {
@@ -57,7 +62,7 @@ object pulenta {
   method velocidadMaxima() = 130
   method peso() = 800
 }
-object baraton {
+object bataton {
   method velocidadMaxima() = 80
   method peso() = 500
 }
@@ -67,4 +72,9 @@ class AutoEspecial{
   const property velocidadMaxima
   const property peso
   const property color   
+}
+
+//Colores validos
+object colores {
+  method validos() = #{"Rojo", "Verde", "Azul", "Negro", "Beige"}
 }

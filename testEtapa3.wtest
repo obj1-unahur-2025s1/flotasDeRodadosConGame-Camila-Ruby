@@ -1,0 +1,46 @@
+import rodados.*
+import dependencias.*
+import pedidos.*
+describe "Grupo de tests para la etapa 3" {
+    const pedido1 = new Pedido(
+        distancia = 960, 
+        tiempoMaximo = 8, 
+        cantidadPasajeros = 4
+        )
+    const pedido2 = new Pedido(
+        distancia = 500, 
+        tiempoMaximo = 8, 
+        cantidadPasajeros = 3
+        )
+    const pedido3 = new Pedido(
+        distancia = 20, 
+        tiempoMaximo = 2, 
+        cantidadPasajeros = 5
+        )
+
+    const deportes = new Dependencia(cantidadEmpleados = 45)
+
+    method initialize(){
+    deportes.agregarAFlota(new ChevroletCorsa(color = "Azul"))
+    deportes.agregarAFlota(new ChevroletCorsa(color = "Verde"))
+    deportes.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
+
+    pedido1.agregarColorIncompatible("Rojo")
+    pedido1.agregarColorIncompatible("Azul") 
+    pedido1.agregarColorIncompatible("Verde")
+    pedido2.agregarColorIncompatible("Rojo")
+
+    
+
+    deportes.agregarPedido(pedido1)
+    deportes.agregarPedido(pedido1)
+    deportes.agregarPedido(pedido1)
+    }
+
+  test "El total de pasajeros en los pedidos seria de 12: 4 en el pedido1, 3 en en pedido2 y 5 en el pedido3" { 
+    assert.equals(12, deportes.totalPasajerosParaPedidos())
+  }
+  /*test "La lista de pedidos que no puede ser satisfechos es " {
+    assert.equals([pedido1], deportes.pedidosNoSactifactorios())
+  }*/
+}

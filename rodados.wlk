@@ -1,14 +1,19 @@
 
+import wollok.game.*
 class ChevroletCorsa {
   const property capacidad = 4
   const property velocidadMaxima =  150
   const property peso = 1300
-  const property color 
+  var property color
+  var property position = game.origin()
   method initialize(){
     if(not colores.validos().contains(color)){
       self.error(color.toString() + " no se encuentra entre los colores válidos")
     }
-  }
+  } 
+  
+  method image() = color.image()
+  
 }
 
 class RenaultKwid {
@@ -76,5 +81,17 @@ class AutoEspecial{
 
 //Colores validos
 object colores {
-  method validos() = #{"Rojo", "Verde", "Azul", "Negro", "Beige"}
+  method validos() = #{"Rojo", "Verde", "Azul", "Negro", "Beige", rojo, verde, azul}
+}
+
+
+object rojo {
+    method image() { return "autitorojo.png" } 
+}
+
+object azul { 
+    method image() { return "autitoAzul.png" }
+}
+object verde { 
+    method image() { return "autitoVerde.png" }
 }

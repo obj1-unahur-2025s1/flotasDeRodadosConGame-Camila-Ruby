@@ -1,0 +1,35 @@
+import wollok.game.*
+import rodados.*
+
+
+program RodadosGame {
+	const cachito = new ChevroletCorsa(color = rojo)
+	const auto2 = new ChevroletCorsa(color = verde)
+	const auto3 = new ChevroletCorsa(color = azul)
+	var autoActivo = cachito
+	game.title("Corsa")
+	game.height(10)
+	game.width(10)
+
+	game.boardGround("paredLadrillos2.jpg")
+
+	
+
+	game.addVisualCharacter(autoActivo)
+
+	game.addVisual(auto2)
+	auto2.position(game.at(4,6))
+
+	game.addVisual(auto3)
+	auto2.position(game.at(3,7))
+
+	keyboard.r().onPressDo{autoActivo.color(rojo)}
+	keyboard.v().onPressDo{autoActivo.color(verde)}
+	keyboard.a().onPressDo{autoActivo.color(azul)}
+
+	keyboard.num1().onPressDo{autoActivo = cachito}
+	keyboard.num2().onPressDo{autoActivo = auto2}
+	keyboard.num3().onPressDo{autoActivo = auto3}
+
+	game.start()
+}

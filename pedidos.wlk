@@ -1,10 +1,15 @@
 import rodados.*
+import dependencias.*
+
 
 class Pedido {
     const property distancia
     var tiempoMaximo
     var property cantidadPasajeros 
+    const property nombre
     const property coloresIncompatibles = #{}
+
+
     method agregarColorIncompatible(unColor){ coloresIncompatibles.add(unColor)}
     method velocidadRequerida() = distancia / tiempoMaximo
     method autoPuedeSatisfacer(unAuto){

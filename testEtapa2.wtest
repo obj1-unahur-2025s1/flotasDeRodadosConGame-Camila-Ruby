@@ -6,6 +6,7 @@ import rodados.*
 describe "Conjuntos de tests para la etapa 2" {
     const cachito = new ChevroletCorsa(color = "Rojo")
     const pedido1 = new Pedido(
+        nombre = "pedido1",
         distancia = 960, 
         tiempoMaximo = 8, 
         cantidadPasajeros = 4

@@ -3,7 +3,9 @@ import rodados.*
 class Dependencia {
     const property flotaDeRodados = []
     const property cantidadEmpleados
-    const property pedidos = []
+    const pedidos = []
+
+    method pedidos()= pedidos.map({p => p.nombre()})
 
     method agregarAFlota(unRodado){flotaDeRodados.add(unRodado)}
     method quitarDeAFlota(unRodado){flotaDeRodados.remove(unRodado)}
@@ -20,7 +22,7 @@ class Dependencia {
 
     method totalPasajerosParaPedidos() = pedidos.sum({p => p.cantidadPasajeros()})
     method sePuedeSatisfacer(unPedido) = flotaDeRodados.any({r => unPedido.autoPuedeSatisfacer(r)})
-    method pedidosNoSactifactorios() = pedidos.filter({p => !self.sePuedeSatisfacer(p)})
+    method pedidosNoSatisfactorios() = pedidos.filter({p => !self.sePuedeSatisfacer(p)}).map({p => p.nombre()})
     method esColorIncompatibleGlobal(unColor)= pedidos.all({p => p.coloresIncompatibles().contains(unColor)})
 
 }

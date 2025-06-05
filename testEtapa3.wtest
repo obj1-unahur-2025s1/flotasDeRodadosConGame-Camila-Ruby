@@ -3,16 +3,19 @@ import dependencias.*
 import pedidos.*
 describe "Grupo de tests para la etapa 3" {
     const pedido1 = new Pedido(
+        nombre = "pedido1",
         distancia = 960, 
         tiempoMaximo = 8, 
         cantidadPasajeros = 4
         )
     const pedido2 = new Pedido(
+        nombre = "pedido2",
         distancia = 500, 
         tiempoMaximo = 8, 
         cantidadPasajeros = 3
         )
     const pedido3 = new Pedido(
+        nombre = "pedido3",
         distancia = 20, 
         tiempoMaximo = 2, 
         cantidadPasajeros = 5
@@ -33,14 +36,19 @@ describe "Grupo de tests para la etapa 3" {
     
 
     deportes.agregarPedido(pedido1)
-    deportes.agregarPedido(pedido1)
-    deportes.agregarPedido(pedido1)
+    deportes.agregarPedido(pedido2)
+    deportes.agregarPedido(pedido3)
     }
 
   test "El total de pasajeros en los pedidos seria de 12: 4 en el pedido1, 3 en en pedido2 y 5 en el pedido3" { 
     assert.equals(12, deportes.totalPasajerosParaPedidos())
   }
-  /*test "La lista de pedidos que no puede ser satisfechos es " {
-    assert.equals([pedido1], deportes.pedidosNoSactifactorios())
-  }*/
+  test "La lista de pedidos que no puede ser satisfechos es el pedido1 y el pedido3" {
+    assert.equals(["pedido1", "pedido3"], deportes.pedidosNoSatisfactorios())
+  }
+  test "El color Rojo es un color incompatible para pedido1 y pedido2, si se lo agregamos a pedido3,
+  entonces es un color imcompatible para todos los pedidos" {
+    pedido3.agregarColorIncompatible("Rojo")
+    assert.that(deportes.esColorIncompatibleGlobal("Rojo"))
+  }
 }
